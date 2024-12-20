@@ -3,12 +3,14 @@
 /// `17` otherwise.
 fn magic_number(n: u32) -> u32 {
     if n % 2 == 0 {
-        return 12
+        12
     }
     else if n % 3 == 0 {
-        return 13
+        13
     }
-    17
+    else {
+        17
+    }
 }
 
 #[cfg(test)]
