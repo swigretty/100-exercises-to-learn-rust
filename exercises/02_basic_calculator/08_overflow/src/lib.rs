@@ -13,6 +13,7 @@ pub fn factorial(n: u32) -> u32 {
     result
 }
 
+
 #[cfg(test)]
 mod tests {
     use crate::factorial;
