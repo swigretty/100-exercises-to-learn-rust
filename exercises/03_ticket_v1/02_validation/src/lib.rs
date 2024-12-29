@@ -19,27 +19,25 @@ impl Ticket {
     // to find the most appropriate options -> https://doc.rust-lang.org/std/string/struct.String.html
     fn new(title: String, description: String, status: String) -> Self {
         
-        let title_bytes: &[u8] = title.as_bytes();
-
-        let description_bytes: &[u8] = description.as_bytes();
-
         let allowed_satus: [&str; 3]    = ["To-Do", "In Progress", "Done"];
-
-        if !allowed_satus.contains(&status.as_str()) {
+        if status != "To-Do" && status != "In Progress" && status != "Done" {
             panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed")
         }
-        else if title_bytes.len() == 0 {
+        // if !allowed_satus.contains(&status.as_str()) {
+        //     panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed")
+        // }
+        else if title.len() == 0 {
             panic!("Title cannot be empty");
         }
-        else if description_bytes.len() == 0 {
+        else if description.len() == 0 {
             panic!("Description cannot be empty");
         }
 
-        else if title_bytes.len() > 50 {
+        else if title.len() > 50 {
             panic!("Title cannot be longer than 50 bytes");
         }
 
-        else if description_bytes.len() > 500 {
+        else if description.len() > 500 {
             panic!("Description cannot be longer than 500 bytes");
         }
 
