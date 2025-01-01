@@ -34,16 +34,16 @@ impl Ticket {
         }
     }
 
-    pub fn title(&self) -> String {
-        self.title.clone()
+    pub fn title(&self) -> &String {
+        &self.title // could also do self.title.clone()
     }
 
-    pub fn description(&self) -> String {
-        self.description.clone()
+    pub fn description(&self) -> &String {
+        &self.description
     }
 
-    pub fn status(&self) -> String {
-        self.status.clone()
+    pub fn status(&self) -> &String {
+        &self.status
     }
 }
 
@@ -53,10 +53,25 @@ mod tests {
 
     #[test]
     fn works() {
-        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        let mut ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
         // If you change the signatures as requested, this should compile:
         // we can call these methods one after the other because they borrow `self`
         // rather than taking ownership of it.
+        let title0: &String = ticket.title();
+        println!("title {title0}");
+        // Thid will not allow me to access ticket.title() anymore
+        // because let .... ticket.title will move the value
+        // let title0_1 = ticket.title;
+        // println!("title {title0_1}");
+
+        let title1: String = ticket.title().clone();
+        println!("title {title1}");
+        ticket.title = "bla".into();
+        let title: &String = ticket.title();
+        println!("title {title}");
+        ticket.title = title1;
+
+
         assert_eq!(ticket.title(), "A title");
         assert_eq!(ticket.description(), "A description");
         assert_eq!(ticket.status(), "To-Do");
