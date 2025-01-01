@@ -54,7 +54,13 @@ mod tests {
     #[test]
     fn description() {
         let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
-        assert_eq!(ticket.description(), "A description");
+        let description: String = ticket.description();
+        // description.push_str("bla");
+
+        assert_eq!(description, "A description");
+        //  This does not work since ownership moved
+        // let status: String = ticket.status();
+        
     }
 
     #[test]
