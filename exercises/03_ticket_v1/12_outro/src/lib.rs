@@ -11,3 +11,76 @@
 // Integration here has a very specific meaning: they test **the public API** of your project.
 // You'll need to pay attention to the visibility of your types and methods; integration
 // tests can't access private or `pub(crate)` items.
+
+
+pub struct Order {
+    product_name: String,
+    unit_price: u32,
+    quantity: u32
+};
+
+
+impl Order {
+
+    fn validate_product_name(product_name: &String) {
+        if product_name.is_empty() {
+            panic!("product_name cannot be empty");
+        }
+        if product_name.len() > 300 {
+            panic!("product_name cannot be longer than 50 bytes");
+        }
+
+    }
+    
+    fn validate_quantity(quantity: &u32) {
+        if quantity < 1 {
+            panic!("quantity must be strictly geater than 0");
+        }
+    }
+
+    fn validate_unit_price(unit_price: &u32) {
+        if unit_price < 1 {
+            panic!("unit_price must be strictly geater than 0");
+        }
+
+    }
+
+    pub fn new() -> Order {
+        Order::validate_title(&title);
+        Order::validate_description(&description);
+        Order::validate_status(&status);
+
+        Order{title, description, status}
+    }
+
+    pub fn title(&self) -> &String {
+        &self.title
+    }
+
+    pub fn description(&self) -> &String {
+        &self.description
+    }
+
+    pub fn status(&self) -> &String {
+        &self.status
+    }
+
+
+    pub fn set_title(&mut self, new_title: String) {
+        Ticket::validate_title(&new_title);
+        self.title = new_title;
+
+    }
+
+    pub fn set_description(&mut self, new_description: String) {
+        Ticket::validate_description(&new_description);
+        self.description = new_description;
+
+    }
+    pub fn set_status(&mut self, new_status: String) {
+        Ticket::validate_status(&new_status);
+        self.status = new_status;
+
+    }
+
+}

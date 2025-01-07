@@ -13,6 +13,10 @@ mod tests {
 
     #[test]
     fn string_size() {
+        // The memory on the stack for String is 
+        // 3 * 64 bits. For pointer, lenght and capacity 
+        // because each of them are of type u64 because we 
+        // are on a 64 bit system
         assert_eq!(size_of::<String>(), 24);
     }
 
