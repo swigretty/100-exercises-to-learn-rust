@@ -45,12 +45,12 @@ impl Order {
 
     }
 
-    pub fn new() -> Order {
-        Order::validate_title(&title);
-        Order::validate_description(&description);
-        Order::validate_status(&status);
+    pub fn new(product_name: String, unit_price: u32, quantity: u32) -> Order {
+        Order::validate_product_name(&product_name);
+        Order::validate_quantity(&quantity);
+        Order::validate_unit_price(&unit_price);
 
-        Order{title, description, status}
+        Order{product_name, quantity, unit_price}
     }
 
     pub fn title(&self) -> &String {
