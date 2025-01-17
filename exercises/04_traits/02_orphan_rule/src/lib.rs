@@ -4,6 +4,12 @@
 //  Look at the compiler error to get familiar with what it looks like.
 //  Then delete the code below and move on to the next exercise.
 
+// This would make it compile
+// trait PartialEq<Rhs: ?Sized = Self> {
+//     fn eq(&self, other: &Rhs) -> bool;
+// }
+
+
 impl PartialEq for u32 {
     fn eq(&self, _other: &Self) -> bool {
         todo!()

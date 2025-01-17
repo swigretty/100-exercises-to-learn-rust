@@ -1,4 +1,4 @@
-use std::cmp::PartialEq;
+// use std::cmp::PartialEq;
 
 struct Ticket {
     title: String,
@@ -8,7 +8,16 @@ struct Ticket {
 
 // TODO: Implement the `PartialEq` trait for `Ticket`.
 
-impl PartialEq for Ticket {}
+impl PartialEq for Ticket {
+    // &Self is the type of the refefence of the current struct or enum
+    // 
+    fn eq(&self, other: &Self) -> bool {
+        (self.description == other.description) && (
+            self.status == other.status) && (self.title == other.title)
+    }
+
+
+}
 
 #[cfg(test)]
 mod tests {
