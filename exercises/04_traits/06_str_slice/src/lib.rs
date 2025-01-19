@@ -31,15 +31,15 @@ impl Ticket {
         }
     }
 
-    pub fn title(&self) -> &String {
+    pub fn title(&self) -> &str { // will automatically coerce &self.title to &str 
         &self.title
     }
 
-    pub fn description(&self) -> &String {
+    pub fn description(&self) -> &str {
         &self.description
     }
 
-    pub fn status(&self) -> &String {
+    pub fn status(&self) -> &str {
         &self.status
     }
 }
